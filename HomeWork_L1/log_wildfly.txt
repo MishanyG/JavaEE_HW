@@ -1,0 +1,20 @@
+20:34:26,990 INFO  [org.jboss.as.repository] (management-handler-thread - 1) WFL
+YDR0001: Content added at location C:\wildfly-20.0.1.Final\standalone\data\conte
+nt\e0\554ab777099c0d78b1e1d6e57ad0f20b0fde61\content
+20:34:27,032 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -
+- 19) WFLYUT0022: Unregistered web context: '/HomeWork_L1' from server 'default-
+server'
+20:34:27,155 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFL
+YSRV0028: Stopped deployment HomeWork_L1.war (runtime-name: HomeWork_L1.war) in
+154ms
+20:34:27,162 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFL
+YSRV0027: Starting deployment of "HomeWork_L1.war" (runtime-name: "HomeWork_L1.w
+ar")
+20:34:28,009 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -
+- 87) WFLYUT0021: Registered web context: '/HomeWork_L1' for server 'default-ser
+ver'
+20:34:28,319 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV
+0016: Replaced deployment "HomeWork_L1.war" with deployment "HomeWork_L1.war"
+20:34:28,325 INFO  [org.jboss.as.repository] (management-handler-thread - 1) WFL
+YDR0002: Content removed from location C:\wildfly-20.0.1.Final\standalone\data\c
+ontent\fc\fe799daa29cb076de4a5c11c54aa016590425a\content
