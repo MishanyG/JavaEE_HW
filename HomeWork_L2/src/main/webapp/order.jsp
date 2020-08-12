@@ -3,9 +3,9 @@
     <html>
     <style>
         #wrapper{
-        outline: 1px solid #787274;
-        padding: 10px;
-        margin: 0 auto;
+            outline: 1px solid #787274;
+            padding: 10px;
+            margin: 0 auto;
         }
         #header{
             position:relative;
@@ -13,13 +13,6 @@
             background-color: #25B33f;
             margin-bottom: 10px;
             background-image: url(images/top.jpg)
-        }
-        #fon{
-            position:relative;
-            height: 576px;
-            background-color: #25B33f;
-            margin-bottom: 10px;
-            background-image: url(images/comp.jpg)
         }
         #content{
             background-color: #5fccf5;
@@ -30,7 +23,9 @@
             align-items: center;
         }
         #footer{
+            background-color: #b2ff79;
             margin-bottom: 10px;
+            height: 500px;
             display: flex;
             align-items: center;
         }
@@ -48,20 +43,18 @@
             align-items: center;
         }
     </style>
-        <head>
-            <title>Домашняя страница</title>
-        </head>
-        <body>
-        <div id="wrapper">
-            <div id="header">
-                <%@ include file="menu.jsp" %> </div>
-            <div id="content"> <h1>Домашняя страница магазина!</h1></div>
-            <div id="fon">
-                <div id="footer">
-                    <strong style="color: #f9ff0f; font: 17px 'Comic Sans MS';">URL-адрес страницы:
+    <head>
+        <title>Оформление заказа</title>
+    </head>
+    <body>
+    <div id="wrapper">
+        <div id="header">
+            <%@ include file="menu.jsp" %> </div>
+        <div id="content"> <h1>Оформление заказа</h1></div>
+            <div id="footer">
+                <strong style="color: #ff090f; font: 17px 'Comic Sans MS';">URL-адрес страницы:
                     <%= request.getRequestURI() %> </strong>
-                </div>
             </div>
-        </div>
-        </body>
+    </div>
+    </body>
     </html>

@@ -3,9 +3,9 @@
     <html>
     <style>
         #wrapper{
-        outline: 1px solid #787274;
-        padding: 10px;
-        margin: 0 auto;
+            outline: 1px solid #787274;
+            padding: 10px;
+            margin: 0 auto;
         }
         #header{
             position:relative;
@@ -48,20 +48,20 @@
             align-items: center;
         }
     </style>
-        <head>
-            <title>Домашняя страница</title>
-        </head>
-        <body>
-        <div id="wrapper">
-            <div id="header">
-                <%@ include file="menu.jsp" %> </div>
-            <div id="content"> <h1>Домашняя страница магазина!</h1></div>
-            <div id="fon">
-                <div id="footer">
-                    <strong style="color: #f9ff0f; font: 17px 'Comic Sans MS';">URL-адрес страницы:
+    <head>
+        <title>Информация о компании</title>
+    </head>
+    <body>
+    <div id="wrapper">
+        <div id="header">
+            <%@ include file="menu.jsp" %> </div>
+        <div id="content"> <h1>Информация о компании!</h1></div>
+        <div id="fon">
+            <div id="footer">
+                <strong style="color: #f9ff0f; font: 17px 'Comic Sans MS';">URL-адрес страницы:
                     <%= request.getRequestURI() %> </strong>
-                </div>
             </div>
         </div>
-        </body>
+    </div>
+    </body>
     </html>
