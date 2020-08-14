@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ru.geekbrains</groupId>
-  <artifactId>HomeWork_L1</artifactId>
+  <artifactId>HomeWork_L4</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>HomeWork_L1 Maven Webapp</name>
+  <name>HomeWork_L4 Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -35,7 +35,7 @@
   </dependencies>
 
   <build>
-    <finalName>HomeWork_L1</finalName>
+    <finalName>HomeWork_L4</finalName>
     <plugins>
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
