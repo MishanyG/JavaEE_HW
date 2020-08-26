@@ -1,23 +1,41 @@
 package HomeWork_4;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
+@Entity (name = "Cat")
+@Table (name = "category")
 public class Category implements Serializable {
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long category_id;
-    @NotNull(message = "Поле не должно быть пустым")
-    @Size (min = 3, max = 75, message = "Поле должно содержать от 3 до 75 символов")
+
+    @Column(name = "category", length = 255)
     private String category;
 
-    public Category (Long category_id, String category) {
-        this.category_id = category_id;
+    @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "category")
+    private List <Product> products;
+
+    public Category () {
+    }
+
+    public Category (Long id, String category) {
+        this.category_id = id;
         this.category = category;
     }
 
-    public Category () {
+    public List <Product> getProducts () {
+        return products;
+    }
+
+    public void setProducts (List <Product> products) {
+        this.products = products;
+    }
+
+    public Category (List <Product> products) {
+        this.products = products;
     }
 
     public Long getCategory_id () {

@@ -4,7 +4,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 @SessionScoped
@@ -12,7 +11,7 @@ import java.util.List;
 public class ProductController implements Serializable {
 
     @Inject
-    private Admin_product admin_product;
+    private ProductRepository productRepository;
     private Product product;
 
     public Product getProduct() {
@@ -23,8 +22,8 @@ public class ProductController implements Serializable {
         this.product = product;
     }
 
-    public List<Product> getAllProducts() throws SQLException {
-        return admin_product.findAll();
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
     }
 
     public String editProduct(Product product) {
@@ -32,8 +31,8 @@ public class ProductController implements Serializable {
         return "/adm_product.xhtml?faces-redirect=true";
     }
 
-    public void deleteProduct(Product product) throws SQLException {
-        admin_product.delete(product.getId());
+    public void deleteProduct(Product product) {
+        productRepository.delete(product.getId());
     }
 
     public String createProduct() {
@@ -41,11 +40,11 @@ public class ProductController implements Serializable {
         return "/adm_product.xhtml?faces-redirect=true";
     }
 
-    public String saveProduct() throws SQLException {
+    public String saveProduct() {
         if (product.getId() != null) {
-            admin_product.update(product);
+            productRepository.update(product);
         } else {
-            admin_product.insert(product);
+            productRepository.insert(product);
         }
         return "/product.xhtml?faces-redirect=true";
     }

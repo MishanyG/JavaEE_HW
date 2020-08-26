@@ -1,45 +1,83 @@
 package HomeWork_4;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
+@Entity (name = "Prod")
+@Table (name = "product")
 public class Product implements Serializable {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long product_id;
 
-    private Long id;
-    @NotNull(message = "Поле не должно быть пустым")
-    @Size (min = 3, max = 45,message = "Поле должно содержать от 3 до 45 символов")
+    @Column(name = "category_id", insertable = false, updatable = false)
+    private Long category_id;
+
+    @Column(name = "firm", length = 255, nullable = false)
     private String firm;
-    @NotNull(message = "Поле не должно быть пустым")
-    @Size (min = 3, max = 45,message = "Поле должно содержать от 3 до 45 символов")
+
+    @Column(name = "model", length = 255, nullable = false)
     private String model;
-    @NotNull(message = "Поле не должно быть пустым")
+
+    @Column(name = "price", scale = 2, precision = 10)
     private BigDecimal price;
 
-    public Product (Long id, String firm, String model, BigDecimal price) {
-        this.id = id;
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @OneToMany (fetch = FetchType.LAZY, mappedBy = "product")
+    private List <Ordering> orderings;
+
+    public Product() {
+    }
+
+    public Product (Long product_id, String firm, String model, BigDecimal price) {
+        this.product_id = product_id;
         this.firm = firm;
         this.model = model;
         this.price = price;
     }
 
-    public Product () {
+    public Long getId() {
+        return product_id;
     }
 
-    public Long getId () {
-        return id;
+    public void setId(Long id) {
+        this.product_id = id;
     }
 
-    public void setId (Long id) {
-        this.id = id;
+    public Long getProduct_id () {
+        return product_id;
     }
 
-    public String getFirm () {
+    public void setProduct_id (Long product_id) {
+        this.product_id = product_id;
+    }
+
+    public Long getCategory_id () {
+        return category_id;
+    }
+
+    public void setCategory_id (Long category_id) {
+        this.category_id = category_id;
+    }
+
+    public Category getCategory () {
+        return category;
+    }
+
+    public void setCategory (Category category) {
+        this.category = category;
+    }
+
+    public String getFirm() {
         return firm;
     }
 
-    public void setFirm (String firm) {
+    public void setFirm(String firm) {
         this.firm = firm;
     }
 
@@ -51,11 +89,19 @@ public class Product implements Serializable {
         this.model = model;
     }
 
-    public BigDecimal getPrice () {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice (BigDecimal price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public List <Ordering> getOrderings () {
+        return orderings;
+    }
+
+    public void setOrderings (List <Ordering> orderings) {
+        this.orderings = orderings;
     }
 }

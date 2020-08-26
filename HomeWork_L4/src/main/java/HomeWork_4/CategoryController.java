@@ -4,7 +4,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 @SessionScoped
@@ -12,12 +11,8 @@ import java.util.List;
 public class CategoryController implements Serializable {
 
     @Inject
-    private Admin_category admin_category;
+    private CategoryRepository categoryRepository;
     private Category category;
-
-    public Product getCategory_id() {
-        return getCategory_id ();
-    }
 
     public void setCategory(Category category) {
         this.category = category;
@@ -27,8 +22,8 @@ public class CategoryController implements Serializable {
         return category;
     }
 
-    public List<Category> getAllCategory() throws SQLException {
-        return admin_category.findAll();
+    public List<Category> getAllCategory() {
+        return categoryRepository.findAll();
     }
 
     public String editCategory(Category category) {
@@ -36,8 +31,8 @@ public class CategoryController implements Serializable {
         return "/adm_categories.xhtml?faces-redirect=true";
     }
 
-    public void deleteCategory(Category category) throws SQLException {
-        admin_category.deleteCat (category.getCategory_id ());
+    public void deleteCategory(Category category) {
+        categoryRepository.deleteCat (category.getCategory_id ());
     }
 
     public String createCategory() {
@@ -45,11 +40,11 @@ public class CategoryController implements Serializable {
         return "/adm_categories.xhtml?faces-redirect=true";
     }
 
-    public String saveCategory() throws SQLException {
+    public String saveCategory() {
         if (category.getCategory_id () != null) {
-            admin_category.updateCat (category);
+            categoryRepository.updateCat (category);
         } else {
-            admin_category.insertCat (category);
+            categoryRepository.insertCat (category);
         }
         return "/categories.xhtml?faces-redirect=true";
     }
