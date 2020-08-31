@@ -1,4 +1,7 @@
-package HomeWork_4;
+package HomeWork_4.Controllers;
+
+import HomeWork_4.Repositories.OrderRepository;
+import HomeWork_4.Ordering;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;

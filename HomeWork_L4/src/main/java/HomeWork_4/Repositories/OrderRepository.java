@@ -1,4 +1,7 @@
-package HomeWork_4;
+package HomeWork_4.Repositories;
+
+import HomeWork_4.DAO.OrderDAO;
+import HomeWork_4.Ordering;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;

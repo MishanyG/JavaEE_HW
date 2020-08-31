@@ -1,7 +1,11 @@
-package HomeWork_4;
+package HomeWork_4.Controllers;
 
+import HomeWork_4.Category;
+import HomeWork_4.Repositories.CategoryRepository;
+import HomeWork_4.Repositories.ProductRepository;
+
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -10,8 +14,12 @@ import java.util.List;
 @Named
 public class CategoryController implements Serializable {
 
-    @Inject
+    @EJB
     private CategoryRepository categoryRepository;
+
+    @EJB
+    private ProductRepository productRepository;
+
     private Category category;
 
     public void setCategory(Category category) {

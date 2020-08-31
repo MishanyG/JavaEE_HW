@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity (name = "Cat")
+@Entity
 @Table (name = "category")
 public class Category implements Serializable {
 
@@ -16,41 +16,38 @@ public class Category implements Serializable {
     private String category;
 
     @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "category")
-    private List <Product> products;
+    private List <Product> product;
 
     public Category () {
     }
 
-    public Category (Long id, String category) {
+    public Category (Long id, String category, List <Product> product) {
         this.category_id = id;
         this.category = category;
+        this.product = product;
     }
 
-    public List <Product> getProducts () {
-        return products;
-    }
-
-    public void setProducts (List <Product> products) {
-        this.products = products;
-    }
-
-    public Category (List <Product> products) {
-        this.products = products;
-    }
-
-    public Long getCategory_id () {
+    public Long getCategory_id() {
         return category_id;
     }
 
-    public void setCategory_id (Long category_id) {
+    public void setCategory_id(Long category_id) {
         this.category_id = category_id;
     }
 
-    public String getCategory () {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory (String category) {
+    public void setCategory(String category) {
         this.category = category;
+    }
+
+    public List <Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List <Product> product) {
+        this.product = product;
     }
 }

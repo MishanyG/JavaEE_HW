@@ -12,8 +12,38 @@
             <div class="header"><ui:include src="menu.xhtml"><ui:param name="reportsBean" value="menu" /></ui:include></div>
             <div class="content"><h1>Оформление заказа</h1></div>
             <div class="footerProd">
-                <strong style="color: #ff090f; font: 17px 'Comic Sans MS';">URL-адрес страницы:
-                    #{request.getRequestURI()} </strong>
+                <h:form id="productForm">
+                    <div>
+                        <h:commandButton value="Добавить заказ" action="#{orderController.createOrder()}"/>
+                        <h:dataTable value="#{orderController.allOrder}" var="ord" >
+                            <h:column>
+                                <f:facet name="header" bgcolor="#996666" style="font: 17px 'Comic Sans MS';">Модель</f:facet>
+                                #{ord.products.model}
+                            </h:column>
+                            <h:column>
+                            <f:facet name="header" bgcolor="#996666" style="font: 17px 'Comic Sans MS';">Фирма</f:facet>
+                            #{ord.products.firm}
+                        </h:column>
+                            <h:column>
+                                <f:facet name="header" bgcolor="#996666" style="font: 17px 'Comic Sans MS';">Цена за шт.</f:facet>
+                                #{ord.products.price}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header" bgcolor="#996666" style="font: 17px 'Comic Sans MS';">Количество</f:facet>
+                                #{ord.count}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Действие</f:facet>
+                                <h:commandButton value="Редактировать заказ"
+                                                 action="#{orderController.editOrder(ord)}"/>
+                                <h:commandButton value="Удалить"
+                                                 action="#{orderController.deleteOrder(ord)}">
+                                    <f:ajax event="click" render="productsForm"/>
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </h:form>
             </div>
     </div>
     </h:body>
