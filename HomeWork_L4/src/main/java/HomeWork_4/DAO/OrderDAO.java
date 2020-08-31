@@ -1,4 +1,4 @@
-package HomeWork_4;
+package HomeWork_4.DAO;
 
 import java.util.List;
 

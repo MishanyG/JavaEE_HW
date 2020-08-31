@@ -1,51 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://java.sun.com/jsp/jstl/functions">
-        <h:head>
-            <h:outputStylesheet name="css/styles.css" />
-            <title>Товар</title>
-        </h:head>
-        <h:body>
-            <div class="wrapper">
-                <div class="header"><ui:include src="menu.xhtml"><ui:param name="reportsBean" value="menu" /></ui:include></div>
-                <div class="content"><h1>Товар</h1></div>
-                <div class="footerProd">
-                    <h:form id="productsForm">
-                        <div>
-                            <h:commandButton value="Добавить товар" action="#{productController.createProduct()}"/>
-                            <h:dataTable value="#{productController.allProducts}" var="prod" >
-                                <h:column>
-                                    <f:facet name="header" bgcolor="#00FF66" style="font: 17px 'Comic Sans MS';">ИД</f:facet>
-                                    #{prod.id}
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header" bgcolor="#996666" style="font: 17px 'Comic Sans MS';">Фирма</f:facet>
-                                    #{prod.firm}
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header" bgcolor="#CC6633" style="font: 17px 'Comic Sans MS';">Модель</f:facet>
-                                    #{prod.model}
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header" bgcolor="#C7FFE1" style="font: 17px 'Comic Sans MS';">Цена</f:facet>
-                                    #{prod.price}
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">Действие</f:facet>
-                                    <h:commandButton value="Редактировать товар"
-                                                     action="#{productController.editProduct(prod)}"/>
-                                    <h:commandButton value="Удалить"
-                                                     action="#{productController.deleteProduct(prod)}">
-                                        <f:ajax event="click" render="productsForm"/>
-                                    </h:commandButton>
-                                </h:column>
-                            </h:dataTable>
-                        </div>
-                    </h:form>
+<h:head>
+    <h:outputStylesheet name="css/styles.css"/>
+    <title>Товар</title>
+</h:head>
+<h:body>
+    <div class="wrapper">
+        <div class="header"><ui:include src="menu.xhtml"><ui:param name="reportsBean" value="menu"/></ui:include></div>
+        <div class="content"><h1>Товар</h1></div>
+        <div class="footerProd">
+            <h:form id="productsForm">
+                <div>
+                    <h:commandButton value="Добавить товар" action="#{productController.createProduct()}"/>
+                    <h:commandButton value="Перейти в корзину" action="/cart.xhtml?faces-redirect=true"/>
+                    <h:dataTable value="#{productController.allProducts}" var="prod">
+                        <h:column>
+                            <f:facet name="header" bgcolor="#00FF66" style="font: 17px 'Comic Sans MS';">ИД</f:facet>
+                            #{prod.product_id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" bgcolor="#996666" style="font: 17px 'Comic Sans MS';">Фирма</f:facet>
+                            #{prod.firm}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" bgcolor="#CC6633"
+                                     style="font: 17px 'Comic Sans MS';">Модель</f:facet>
+                            #{prod.model}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" bgcolor="#C7FFE1" style="font: 17px 'Comic Sans MS';">Цена</f:facet>
+                            #{prod.price}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header" bgcolor="#C7FFE1" style="font: 17px 'Comic Sans MS';">Категория</f:facet>
+                            #{prod.category}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Действие</f:facet>
+                            <h:commandButton value="Редактировать товар"
+                                             action="#{productController.editProduct(prod)}"/>
+                            <h:commandButton value="Удалить"
+                                             action="#{productController.deleteProduct(prod)}">
+                                <f:ajax event="click" render="productsForm"/>
+                            </h:commandButton>
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="Добавить в корзину"
+                                             action="#{cartController.addToCart(prod)}"/>
+                        </h:column>
+                    </h:dataTable>
                 </div>
-            </div>
-        </h:body>
-    </html>
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>

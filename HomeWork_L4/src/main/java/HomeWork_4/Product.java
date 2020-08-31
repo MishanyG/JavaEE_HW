@@ -1,11 +1,11 @@
 package HomeWork_4;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.List;
+        import javax.persistence.*;
+        import java.io.Serializable;
+        import java.math.BigDecimal;
+        import java.util.List;
 
-@Entity (name = "Prod")
+@Entity
 @Table (name = "product")
 public class Product implements Serializable {
     @Id
@@ -24,7 +24,7 @@ public class Product implements Serializable {
     @Column(name = "price", scale = 2, precision = 10)
     private BigDecimal price;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -34,11 +34,12 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product (Long product_id, String firm, String model, BigDecimal price) {
+    public Product (Long product_id, String firm, String model, BigDecimal price, Category category) {
         this.product_id = product_id;
         this.firm = firm;
         this.model = model;
         this.price = price;
+        this.category = category;
     }
 
     public Long getId() {

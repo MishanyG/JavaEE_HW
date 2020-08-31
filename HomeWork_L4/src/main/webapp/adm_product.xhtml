@@ -16,6 +16,16 @@
         <div class="footerProd">
             <h:form id="productForm">
                 <div>
+                    <h:outputLabel value="Категория продукта"/>
+                    <h:selectOneListbox size="1" id="productCategory" value="#{productController.product.category_id}">
+                    <f:selectItems value="#{productController.allCategories}"
+                                   var="cat"
+                                   itemValue="#{cat.category_id}"
+                                   itemLabel="#{cat.category}"
+                                   itemLabelEscaped="true"/>
+                    </h:selectOneListbox>
+                </div>
+                <div>
                     <h:outputLabel value="Фирма"/>
                     <h:inputText id="firm" value="#{productController.product.firm}" placeholder="Enter name firm"/><h:message for="firm" style="color: red" />
                 </div>
