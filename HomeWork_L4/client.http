@@ -1,0 +1,40 @@
+POST http://127.0.0.1:8080/HomeWork_L4/api/product/insertProd
+Content-Type: application/json
+
+  {
+    "category_id": 2,
+    "firm": "Mac",
+    "model": "m-123",
+    "price": 8800
+  }
+
+###
+
+DELETE http://127.0.0.1:8080/HomeWork_L4/api/product/delete/24
+
+###
+
+POST http://127.0.0.1:8080/HomeWork_L4/api/product/insertCat
+Content-Type: application/json
+
+  {
+    "category": "Диски"
+  }
+
+###
+
+GET http://127.0.0.1:8080/HomeWork_L4/api/product/findById/3
+
+###
+
+GET http://127.0.0.1:8080/HomeWork_L4/api/product/findByName/Intel/Core
+
+###
+
+GET  http://127.0.0.1:8080/HomeWork_L4/api/product/findAll
+
+###
+
+GET  http://127.0.0.1:8080/HomeWork_L4/api/product/findByIdCat/2
+
+###
