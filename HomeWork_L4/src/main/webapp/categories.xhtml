@@ -16,7 +16,7 @@
         <div class="footerProd">
             <h:form id="productsForm">
                 <div>
-                    <h:commandButton value="Добавить категорию" action="#{categoryController.createCategory()}"/>
+                    <h:commandButton value="Добавить категорию" action="#{categoryController.createCategory()}" rendered="#{request.isUserInRole('ADMIN')}"/>
                     <h:dataTable value="#{categoryController.allCategory}" var="cat">
                         <h:column>
                             <f:facet name="header" bgcolor="#00FF66" style="font: 17px 'Comic Sans MS';">ИД</f:facet>
@@ -30,9 +30,9 @@
                         </h:column>
                         <h:column>
                             <h:commandButton value="Редактировать категорию"
-                                             action="#{categoryController.editCategory(cat)}"/>
+                                             action="#{categoryController.editCategory(cat)}" rendered="#{request.isUserInRole('ADMIN')}"/>
                             <h:commandButton value="Удалить"
-                                             action="#{categoryController.deleteCategory(cat)}">
+                                             action="#{categoryController.deleteCategory(cat)}" rendered="#{request.isUserInRole('ADMIN')}">
                                 <f:ajax event="click" render="productsForm"/>
                             </h:commandButton>
                         </h:column>

@@ -16,7 +16,7 @@
         <div class="footerProd">
             <h:form id="productsForm">
                 <div>
-                    <h:commandButton value="Добавить товар" action="#{productController.createProduct()}"/>
+                    <h:commandButton value="Добавить товар" action="#{productController.createProduct()}" rendered="#{request.isUserInRole('ADMIN')}"/>
                     <h:commandButton value="Перейти в корзину" action="/cart.xhtml?faces-redirect=true"/>
                     <h:dataTable value="#{productController.allProducts}" var="prod">
                         <h:column>
@@ -43,9 +43,9 @@
                         <h:column>
                             <f:facet name="header">Действие</f:facet>
                             <h:commandButton value="Редактировать товар"
-                                             action="#{productController.editProduct(prod)}"/>
+                                             action="#{productController.editProduct(prod)}" rendered="#{request.isUserInRole('ADMIN')}"/>
                             <h:commandButton value="Удалить"
-                                             action="#{productController.deleteProduct(prod)}">
+                                             action="#{productController.deleteProduct(prod)}" rendered="#{request.isUserInRole('ADMIN')}">
                                 <f:ajax event="click" render="productsForm"/>
                             </h:commandButton>
                         </h:column>

@@ -7,7 +7,7 @@
 
     <persistence-unit name="ds" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:/jboss/datasources/ExampleDS</jta-data-source>
+        <jta-data-source>java:/jboss/datasources/DS</jta-data-source>
         <properties>
             <property name="hibernate.connection.useUnicode" value="true"/>
             <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
